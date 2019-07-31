@@ -17,6 +17,7 @@
 
 EDITOR=vim;   	export EDITOR
 PAGER=less;  	export PAGER
+BROWSER=surf;   export BROWSER
 
 # set ENV to a file invoked each time sh is started for interactive use.
 ENV=$HOME/.shrc; export ENV
@@ -28,5 +29,11 @@ if [ -x /usr/bin/resizewin ] ; then /usr/bin/resizewin -z ; fi
 GOPATH=$HOME/go; export GOPATH
 
 # Go binaries in PATH
-PATH=$PATH:$GOPATH/bin/; export PATH
+PATH=$PATH:$GOPATH/bin/;
 
+# Plan9 binaries in PATH
+PATH=$PATH:/usr/local/plan9/bin;
+
+PATH=$PATH:$HOME/.local/bin;
+
+export PATH

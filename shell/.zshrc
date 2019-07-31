@@ -1,3 +1,4 @@
+source ~/.git-prompt.sh
 source ~/.profile
 
 # If not running interactively, do not do anything
@@ -11,6 +12,7 @@ setopt INTERACTIVE_COMMENTS
 setopt GLOB_STAR_SHORT GLOB_DOTS EXTENDED_GLOB
 setopt NO_NOMATCH
 setopt AUTO_PUSHD PUSHD_IGNORE_DUPS
+setopt PROMPT_SUBST
 # }}}
 
 
@@ -89,9 +91,17 @@ bindkey -M viins ' ' magic-space
 #}}}
 
 # Prompt
-PROMPT='[%F{red}%n%f@%F{blue}%m%f][%F{yellow}%0~%f]%# '
-RPROMPT='[%F{yellow}%?%f]'
+PROMPT='[%F{red}%n%f@%F{blue}%m%f][%F{yellow}%0~%f][$(__git_ps1 %b)]%# '
+#RPROMPT='[%F{yellow}%?%f]'
 
 # Alias for info
 alias info='info --vi-keys'
+
+# auto ssh-agent
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval `ssh-agent`
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add
 
