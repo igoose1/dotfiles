@@ -20,19 +20,19 @@ zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '/home/oskar/.zshrc'
 
 # generate descriptions with magic.
-zstyle ':completion:*' auto-description 'specify: %d'
+# zstyle ':completion:*' auto-description 'specify: %d'
 
 # Don't prompt for a huge list, page it!
-zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+# zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
 # Don't prompt for a huge list, menu it!
-zstyle ':completion:*:default' menu 'select=0'
+#zstyle ':completion:*:default' menu 'select=0'
 
 # Have the newer files last so I see them first
-zstyle ':completion:*' file-sort modification reverse
+# zstyle ':completion:*' file-sort modification reverse
 
 # color code completion!!!!  Wohoo!
-zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+# zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
 
 autoload -Uz compinit
 compinit
@@ -86,7 +86,7 @@ bindkey '\e[3~' delete-char
 bindkey -M vicmd '!' edit-command-output
 
 # it's like, space AND completion.  Gnarlbot.
-bindkey -M viins ' ' magic-space
+# bindkey -M viins ' ' magic-space
 
 #}}}
 
@@ -105,3 +105,11 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
+# I call it often
+alias scrots="scrot -s -e 'mv \$f /tmp/'"
+
+PATH="/home/oskar/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/oskar/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/oskar/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/oskar/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/oskar/perl5"; export PERL_MM_OPT;
