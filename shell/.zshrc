@@ -42,7 +42,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 bindkey -v
 
-#{{{ Key bindings
+# Key bindings
 
 # Who doesn't want home and end to work?
 bindkey '\e[1~' beginning-of-line
@@ -56,10 +56,16 @@ bindkey -M vicmd "?" history-incremental-search-forward
 bindkey -M vicmd "//" history-beginning-search-backward
 bindkey -M vicmd "??" history-beginning-search-forward
 
+# History
+bindkey "^[[5~" history-beginning-search-backward
+bindkey "^[[6~" history-beginning-search-forward
+
 bindkey "\eOP" run-help
 
 # oh wow!  This is killer...  try it!
-bindkey -M vicmd "q" push-line
+# bindkey -M vicmd "q" push-line
+
+bindkey '^A' push-input
 
 # Ensure that arrow keys work as they should
 bindkey '\e[A' up-line-or-history
@@ -88,8 +94,6 @@ bindkey -M vicmd '!' edit-command-output
 # it's like, space AND completion.  Gnarlbot.
 # bindkey -M viins ' ' magic-space
 
-#}}}
-
 # Prompt
 PROMPT='[%F{red}%n%f@%F{blue}%m%f][%F{yellow}%0~%f][$(__git_ps1 %b)]%# '
 #RPROMPT='[%F{yellow}%?%f]'
@@ -107,6 +111,9 @@ ssh-add -l > /dev/null || ssh-add
 
 # I call it often
 alias scrots="scrot -s -e 'mv \$f /tmp/'"
+
+# Bell
+alias wake="echo $'\a'"
 
 PATH="/home/oskar/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/oskar/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
